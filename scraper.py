@@ -86,6 +86,6 @@ credentials = ServiceAccountCredentials.from_json_keyfile_name('api-credentials.
 
 gc = gspread.authorize(credentials)
 
-# testing api
-wks = gc.open("https://docs.google.com/spreadsheets/d/10mruvNF8NEgZbwPzwa2VkGt77dJRUgBzkEbrK6pvYgk/edit#gid=0").get_worksheet(0)
-wks.update_acell('A1','API TEST')
+# access sheet by url
+wks = gc.open_by_url("https://docs.google.com/spreadsheets/d/1ezclnKQ5k0vIvNus89iSiiLXxZUG3-02KNJE5kA8DqM/edit#gid=0").get_worksheet(1)
+wks.update_acell('A207','API TEST')
