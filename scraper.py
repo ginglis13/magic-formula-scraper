@@ -27,15 +27,6 @@ password.send_keys("PASSWORD")
 button=driver.find_element_by_name("login")
 button.click()
 
-'''
-This is where i could wait explicitly for the element to appear. will do implicitly for now
-try:
-    element = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((ID, "myDynamicElement"))
-    )
-finally:
-    driver.quit()
-'''
 #url = 'https://www.magicformulainvesting.com/Screening/StockScreening'
 driver.implicitly_wait(10) # seconds
 time.sleep(1)
