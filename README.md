@@ -23,7 +23,7 @@ I have set up my script to run using a cron job every 3 months on the first of e
 0 1 1 */3 * /path/to/python /path/to/scraper.py
 ```
 
-From reading online, it sounds as thought a cron job cannot read standard input and will generate an end of file error. So for the cronjob, I have hardcoded my username and password, which is really bad practice. However, since this site doesn't really contain sensitive information, I'm okay with that. The provided script in this repository still uses the secure method provided by getpass to deal with the user's password.
+From reading online, it sounds as though a cron job cannot read standard input and will generate an end of file error. So for the cronjob, I have hardcoded my username and password, which is really bad practice. However, since this site doesn't really contain sensitive information, I'm okay with that. The provided script in this repository still uses the secure method provided by getpass to deal with the user's password.
 
 Features to Implement
 ------
