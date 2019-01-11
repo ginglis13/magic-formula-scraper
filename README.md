@@ -18,14 +18,37 @@ Features
 
 Usage
 ------
-1. Set up for personal use
+1. [Create a Google Developer Account](https://console.developers.google.com/). This allows access to Google's Drive and Sheets APIs, as well as a ton of other resources. Signing up give the user $300 in credit!
 
-Some part of the script will have to be personalized by the user. These sections of scraper.py are listed below.
+2.[Read the gspread docs on how to generate credentials](https://gspread.readthedocs.io/en/latest/oauth2.html). This will help with linking your worksheet to the script
 
-2. Cron Job
+3. Some part of the script will have to be personalized by the user. These sections of scraper.py are listed below.
 
-I have set up my script to run using a cron job every 3 months on the first of each month at 1 pm. Below is my cron job, accessed on a Mac by running "crontab -e" at the terminal. I first had to give iTerm and the Terminal apps permission to read/write from my ssd.
+Line 74
+```python
+credentials = ServiceAccountCredentials.from_json_keyfile_name('/path/to/your/credentials', scope)
+```
 
+Line 78
+```python
+# access sheet by url
+wks = gc.open_by_url('URL_TO_YOUR_SPREADSHEET').get_worksheet(1) # worksheet number
+```
+
+#### Cron Job
+
+I have set up my script to run using a cron job every 3 months on the first of each month at 1 pm. 
+
+Edit lines 31-35 if you wish to hardcode your login credentials
+
+```python
+# enter email and password. uses getpass to hide password (i.e. not using plaintext)
+your_email=raw_input("Please enter your email for magicformulainvesting.com: ")
+your_password=getpass.getpass("Please enter your password for magicformulainvesting.com: ")
+username.send_keys(your_email)
+password.send_keys(your_password)
+```
+Below is my cron job, accessed on a Mac by running "crontab -e" at the terminal. I first had to give iTerm and the Terminal apps permission to read/write from my ssd.
 
 ```sh
 #!/bin/bash
