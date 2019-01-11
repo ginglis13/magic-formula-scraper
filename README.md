@@ -31,7 +31,7 @@ credentials = ServiceAccountCredentials.from_json_keyfile_name('/path/to/your/cr
 #### Line 78
 ```python
 # access sheet by url
-wks = gc.open_by_url('URL_TO_YOUR_SPREADSHEET').get_worksheet(1) # worksheet number
+worksheet = gc.open_by_url('URL_TO_YOUR_SPREADSHEET').get_worksheet(1) # worksheet number
 ```
 
 ### Cron Job
