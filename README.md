@@ -1,4 +1,5 @@
-#magic-formula-scraper
+# magic-formula-scraper
+
 Python script for scraping magicformulainvesting.com using selenium.
 
 ======
