@@ -75,9 +75,9 @@ credentials = ServiceAccountCredentials.from_json_keyfile_name('/path/to/your/cr
 gc = gspread.authorize(credentials)
 
 # access sheet by url
-wks = gc.open_by_url('URL_TO_YOUR_SPREADSHEET').get_worksheet(1) # worksheet number
+worksheet = gc.open_by_url('URL_TO_YOUR_SPREADSHEET').get_worksheet(1) # worksheet number
 date=datetime.datetime.today().strftime('%Y-%m-%d') # current date
-wks.append_row([date]) #append the date
+worksheet.append_row([date]) #append the date
 
 # find all td elements, write needed elements to file
 trs=driver.find_elements_by_xpath('//table[@class="divheight screeningdata"]/tbody/tr')
@@ -90,6 +90,6 @@ for tr in trs:
     # write to csv file
     writer.writerow([company_name,company_tikr])
     # append row to the google worksheet
-    wks.append_row([company_name,company_tikr]) 
+    worksheet.append_row([company_name,company_tikr]) 
 
 driver.quit() 
