@@ -16,6 +16,14 @@ Features
 + scrapes information about listed companies, writes to csv file titled 'companies.csv'
 + appends data to spreadsheet using the [Google Sheets API](https://developers.google.com/sheets/api/) and [gspread](https://gspread.readthedocs.io/en/latest/)
 
+Usage
+------
+1. Set up for personal use
+
+Some part of the script will have to be personalized by the user. These sections of scraper.py are listed below.
+
+2. Cron Job
+
 I have set up my script to run using a cron job every 3 months on the first of each month at 1 pm. Below is my cron job, accessed on a Mac by running "crontab -e" at the terminal. I first had to give iTerm and the Terminal apps permission to read/write from my ssd.
 
 
