@@ -10,6 +10,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 import time
 import csv
+import sys
+import getpass
 
 # login url for site
 url = 'https://www.magicformulainvesting.com/Account/LogOn'
@@ -24,9 +26,11 @@ driver.get(url)
 username=driver.find_element_by_name("Email")
 password=driver.find_element_by_name("Password")
 
-# ENTER YOUR EMAIL AND PASSWORD
-username.send_keys("EMAIL")
-password.send_keys("PASSWORD")
+# enter email and password. uses getpass to hide password (i.e. not using plaintext)
+email=raw_input("Please enter your email for magicformulainvesting.com: ")
+your_password=getpass.getpass("Please enter your password for magicformulainvesting.com:")
+username.send_keys(email)
+password.send_keys(your_password)
 
 # click login button
 button=driver.find_element_by_name("login")
@@ -37,8 +41,6 @@ button.click()
 # the redirect happens. 1 extra second of runtime is still
 # better than about a half hour of manual typing
 time.sleep(1) # seconds
-
-print(driver.current_url) # check redirect
 
 # use xpathing to find the radio button element for 50 stocks and click it
 radio = driver.find_element_by_xpath('//input[@value="false" and contains(@name,"Select30")]')
@@ -70,5 +72,4 @@ for tr in trs:
     # write to csv file
     writer.writerow([company_name,company_tikr])
 
-time.sleep(1)
 driver.quit() 
