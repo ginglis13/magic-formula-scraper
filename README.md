@@ -18,9 +18,9 @@ Features
 
 Usage
 ------
-1. [Create a Google Developer Account](https://console.developers.google.com/). This allows access to Google's Drive and Sheets APIs, as well as a ton of other resources. Signing up give the user $300 in credit!
+1. [Create a Google Developer Account](https://console.developers.google.com/). This allows access to Google's Drive and Sheets APIs, as well as a ton of other resources. Signing up gives the user $300 in credit!
 
-2.[Read the gspread docs on how to generate credentials](https://gspread.readthedocs.io/en/latest/oauth2.html). This will help with linking your worksheet to the script
+2. [Read the gspread docs on how to generate credentials](https://gspread.readthedocs.io/en/latest/oauth2.html). This will help with linking your worksheet to the script
 
 3. Some part of the script will have to be personalized by the user. These sections of scraper.py are listed below.
 
