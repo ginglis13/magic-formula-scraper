@@ -9,9 +9,8 @@ the criteria of the formula. However, the site does not allow one to copy the in
 these companies directly. Manually typing out the names of 30+ companies and their information
 is a time-suck, so I created this script to scrape this information instead.
 
-Bugs and Needed Features
+Features to Implement
 ------
-+ script works on first run almost every time, subsequent runs catch an error on line 47/48, which is where a radio button is selected
 + have user enter email and password from command line rather than having it hardcoded in
 + write company info to .csv
 + (optional) log in to google sheets and append data to our spreadsheet
