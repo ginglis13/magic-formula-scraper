@@ -81,6 +81,7 @@ wks.append_row([date]) #append the date
 
 # find all td elements, write needed elements to file
 trs=driver.find_elements_by_xpath('//table[@class="divheight screeningdata"]/tbody/tr')
+
 for tr in trs:
     td = tr.find_elements_by_xpath(".//td")
     # encode company info as string to write to file
