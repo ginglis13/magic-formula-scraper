@@ -15,3 +15,4 @@ Features to Implement
 + write company info to csv
 + have a file of companies already researched/invested in, check this list before writing to csv
 + (optional) log in to google sheets and append data to our spreadsheet
++ make the script a cronjob every 3 months
