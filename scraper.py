@@ -43,8 +43,9 @@ time.sleep(.1)
 print(driver.current_url) #check redirect
 
 ## TODO: add clicking for 50 button. default is 30
-
-radio = driver.find_element_by_xpath('//input[@value="false" and contains(@name,"Select30")]')
+# an error is often reached here. the script usually works fine but will sometimes catch on line 47/48
+#radio = driver.find_element_by_xpath('//input[@value="false" and contains(@name,"Select30")]')
+radio = driver.find_element_by_xpath('//input[@name="Select30" and contains(@value,"false")]')
 radio.click()
 
 button2=driver.find_element_by_name("stocks")
