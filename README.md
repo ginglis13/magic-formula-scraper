@@ -17,7 +17,6 @@ Features
 
 Features to Implement
 ------
-+ have user enter email and password from command line rather than having it hardcoded in
 + have a file of companies already researched/invested in, check this list before writing to csv
-+ (optional) log in to google sheets and append data to our spreadsheet
++ log in to google sheets using the sheets API and append data to our spreadsheet
 + make the script a cronjob every 3 months
