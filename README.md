@@ -14,7 +14,7 @@ Features
 + opens a safari browser to the magic formula login page, then uses selenium's Keys and the getpass library to enter login information
 + once logged in, selects the number of stocks to view and clicks the corresponding button to display them
 + scrapes information about listed companies, writes to csv file titled 'companies.csv'
-+ appends data to spreadsheet using the [Google Sheets API](https://developers.google.com/sheets/api/) and [gspread](https://github.com/burnash/gspread)
++ appends data to spreadsheet using the [Google Sheets API](https://developers.google.com/sheets/api/) and [gspread](https://gspread.readthedocs.io/en/latest/)
 
 I have set up my script to run using a cron job every 3 months on the first of each month at 1 pm. Below is my cron job, accessed on a Mac by running "crontab -e" at the terminal. I first had to give iTerm and the Terminal apps permission to read/write from my ssd.
 
