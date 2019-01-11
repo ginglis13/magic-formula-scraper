@@ -61,6 +61,7 @@ time.sleep(.5)
 # open csv file and declare writer
 company_file=open('companies.csv','wb')
 writer=csv.writer(company_file)
+writer.writerow(['Company','Ticker']) # csv header
 
 # find all td elements, write needed elements to file
 trs=driver.find_elements_by_xpath('//table[@class="divheight screeningdata"]/tbody/tr')
