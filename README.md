@@ -29,3 +29,4 @@ From reading online, it sounds as though a cron job cannot read standard input a
 Features to Implement
 ------
 + have a file of companies already researched/invested in, check this list before writing to csv
++ currently able to read/write the correct google worksheet, however need to add functionality for appending the information in the correct place
