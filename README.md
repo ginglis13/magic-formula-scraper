@@ -15,8 +15,15 @@ Features
 + once logged in, selects the number of stocks to view and clicks the corresponding button to display them
 + scrapes information about listed companies, writes to csv file titled 'companies.csv'
 
+I have set up my script to run using a cronjob every 3 months on the first of each month at 1 pm. Below is my file, accessed on a Mac by running "crontab -e" at the terminal. I first had to give iTerm and the Terminal apps permission to read/write from my ssd.
+
+
+```sh
+#!/bin/bash
+0 1 1 */3 * /usr/bin/python2.7 /Users/gavininglis/Documents/WebDev/magic-formula-scraper/scraper.py
+```
+
 Features to Implement
 ------
 + have a file of companies already researched/invested in, check this list before writing to csv
 + log in to google sheets using the sheets API and append data to our spreadsheet
-+ make the script a cronjob every 3 months
