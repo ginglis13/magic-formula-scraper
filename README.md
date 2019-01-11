@@ -2,7 +2,6 @@
 
 Python script for scraping [magicformulainvesting.com](https://www.magicformulainvesting.com/) using [selenium](https://www.seleniumhq.org/).
 
-
 My brother and I make investments by following Joel Greenblatt's Magic Formula.
 The site mentioned above uses this formula and outputs the top X companies that fit within
 the criteria of the formula. However, the site does not allow one to copy the information of
@@ -22,7 +21,7 @@ Usage
 
 2. [Read the gspread docs on how to generate credentials](https://gspread.readthedocs.io/en/latest/oauth2.html). This will help with linking your worksheet to the script
 
-3. Some part of the script will have to be personalized by the user. These sections of scraper.py are listed below.
+3. Some parts of the script will have to be personalized by the user. These sections of scraper.py are listed below.
 
 #### Line 74
 ```python
