@@ -3,9 +3,9 @@
 Python script for scraping [magicformulainvesting.com](https://www.magicformulainvesting.com/) using [selenium](https://www.seleniumhq.org/).
 
 My brother and I make investments by following Joel Greenblatt's Magic Formula.
-The site mentioned above uses this formula and outputs the top X companies that fit within
-the criteria of the formula. However, the site does not allow one to copy the information of
-these companies directly. Manually typing out the names of 30+ companies and their information
+The site above uses this formula and outputs the top X companies that fit within
+the criteria of the formula. However, the site does not allow a user to copy the information of
+these companies from the webpage directly. Manually typing out the names of 30+ companies and their information
 is a time-suck, so I created this script to scrape this information instead.
 
 Features
