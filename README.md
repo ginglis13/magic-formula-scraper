@@ -24,18 +24,18 @@ Usage
 
 3. Some part of the script will have to be personalized by the user. These sections of scraper.py are listed below.
 
-Line 74
+#### Line 74
 ```python
 credentials = ServiceAccountCredentials.from_json_keyfile_name('/path/to/your/credentials', scope)
 ```
 
-Line 78
+#### Line 78
 ```python
 # access sheet by url
 wks = gc.open_by_url('URL_TO_YOUR_SPREADSHEET').get_worksheet(1) # worksheet number
 ```
 
-#### Cron Job
+### Cron Job
 
 I have set up my script to run using a cron job every 3 months on the first of each month at 1 pm. 
 
