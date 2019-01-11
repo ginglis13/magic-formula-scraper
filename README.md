@@ -13,7 +13,25 @@ Features
 + opens a safari browser to the magic formula login page, then uses selenium's Keys and the getpass library to enter login information
 + once logged in, selects the number of stocks to view and clicks the corresponding button to display them
 + scrapes information about listed companies, writes to csv file titled 'companies.csv'
-+ appends data to spreadsheet using the [Google Sheets API](https://developers.google.com/sheets/api/) and [gspread](https://gspread.readthedocs.io/en/latest/)
++ appends data to spreadsheet using the Google Sheets API and gspread 
+### Main Loop
+This is where the data is both written to a csv file and added to a Google worksheet
+```python
+# find all td elements, write needed elements to file
+trs=driver.find_elements_by_xpath('//table[@class="divheight screeningdata"]/tbody/tr')
+
+for tr in trs:
+    td = tr.find_elements_by_xpath(".//td")
+    # encode company info as string to write to file
+    company_name=td[0].get_attribute("innerHTML").encode("UTF-8")
+    company_tikr=td[1].get_attribute("innerHTML").encode("UTF-8")
+    # write to csv file
+    writer.writerow([company_name,company_tikr])
+    # append row to the google worksheet
+    worksheet.append_row([company_name,company_tikr]) 
+
+driver.quit()
+```
 
 Usage
 ------
