@@ -1,40 +1,46 @@
 #!/usr/bin/env python
-import requests
-from lxml import html
-import urllib2
-from bs4 import BeautifulSoup
+# scraper.py
+# web scraper for magicformulainvesting.com
+# pulls company information from site to save time that would be spent manually typing out the info
+# Gavin Inglis
+# January 2019
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 import time
+import csv
 
+# login url for site
 url = 'https://www.magicformulainvesting.com/Account/LogOn'
 
+# declare driver as safari instance
 driver = webdriver.Safari()
 
-# Go to your page url
+# go to page url
 driver.get(url)
 
+# find the input elements for logging in
 username=driver.find_element_by_name("Email")
 password=driver.find_element_by_name("Password")
 
-## ENTER YOUR EMAIL AND PASSWORD
-username.send_keys("USERNAME")
+# ENTER YOUR EMAIL AND PASSWORD
+username.send_keys("EMAIL")
 password.send_keys("PASSWORD")
 
+# click login button
 button=driver.find_element_by_name("login")
 button.click()
 
-#url = 'https://www.magicformulainvesting.com/Screening/StockScreening'
-driver.implicitly_wait(10) # seconds
-time.sleep(1)
+# sleep script for a second to allow time for page redirect
+# the sleep time could be less, but I want to ensure that 
+# the redirect happens. 1 extra second of runtime is still
+# better than about a half hour of manual typing
+time.sleep(1) # seconds
 
-print(driver.current_url) #check redirect
+print(driver.current_url) # check redirect
 
-## TODO: add clicking for 50 button. default is 30
-# an error is often reached here. the script usually works fine but will sometimes catch on line 47/48
+# use xpathing to find the radio button element for 50 stocks and click it
 radio = driver.find_element_by_xpath('//input[@value="false" and contains(@name,"Select30")]')
 radio.click()
 
@@ -50,11 +56,19 @@ time.sleep(.5)
 #         --> tr (all trs, not just class=altrow
 # update: done below using xpath!
 
-trs=driver.find_elements_by_xpath('//table[@class="divheight screeningdata"]/tbody/tr')
+# open csv file and declare writer
+company_file=open('companies.csv','wb')
+writer=csv.writer(company_file)
 
+# find all td elements, write needed elements to file
+trs=driver.find_elements_by_xpath('//table[@class="divheight screeningdata"]/tbody/tr')
 for tr in trs:
     td = tr.find_elements_by_xpath(".//td")
-    print td[0].get_attribute("innerHTML").encode("UTF-8") +"\t"+td[1].get_attribute("innerHTML").encode("UTF-8")
+    # encode company info as string to write to file
+    company_name=td[0].get_attribute("innerHTML").encode("UTF-8")
+    company_tikr=td[1].get_attribute("innerHTML").encode("UTF-8")
+    # write to csv file
+    writer.writerow([company_name,company_tikr])
 
-time.sleep(2)
+time.sleep(1)
 driver.quit() 
