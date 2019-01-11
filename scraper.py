@@ -21,7 +21,7 @@ username=driver.find_element_by_name("Email")
 password=driver.find_element_by_name("Password")
 
 ## ENTER YOUR EMAIL AND PASSWORD
-username.send_keys("EMAIL")
+username.send_keys("USERNAME")
 password.send_keys("PASSWORD")
 
 button=driver.find_element_by_name("login")
@@ -38,14 +38,13 @@ finally:
 '''
 #url = 'https://www.magicformulainvesting.com/Screening/StockScreening'
 driver.implicitly_wait(10) # seconds
-time.sleep(.1)
+time.sleep(1)
 
 print(driver.current_url) #check redirect
 
 ## TODO: add clicking for 50 button. default is 30
 # an error is often reached here. the script usually works fine but will sometimes catch on line 47/48
-#radio = driver.find_element_by_xpath('//input[@value="false" and contains(@name,"Select30")]')
-radio = driver.find_element_by_xpath('//input[@name="Select30" and contains(@value,"false")]')
+radio = driver.find_element_by_xpath('//input[@value="false" and contains(@name,"Select30")]')
 radio.click()
 
 button2=driver.find_element_by_name("stocks")
