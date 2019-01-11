@@ -1,6 +1,7 @@
 # magic-formula-scraper
 
-Python script for scraping magicformulainvesting.com using selenium.
+Python script for scraping [magicformulainvesting.com](https://www.magicformulainvesting.com/) using selenium.
+
 
 My brother and I make investments by following Joel Greenblatt's Magic Formula.
 The site mentioned above uses this formula and outputs the top X companies that fit within
