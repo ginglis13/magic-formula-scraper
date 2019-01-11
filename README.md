@@ -79,4 +79,4 @@ Features to Implement
 + have a file of companies already researched/invested in, check this list before writing to csv
 + need to add a blank row before adding all company info to google worksheet
 
-![gif_example][scrape.gif]
+![][scrape.gif]
