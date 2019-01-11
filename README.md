@@ -47,7 +47,7 @@ your_password=getpass.getpass("Please enter your password for magicformulainvest
 username.send_keys(your_email)
 password.send_keys(your_password)
 ```
-Below is my cron job, accessed on a Mac by running "crontab -e" at the terminal. I first had to give iTerm and the Terminal apps permission to read/write from my ssd.
+Below is my cron job, accessed on Mac or Linux by running "crontab -e" at the terminal. I first had to give iTerm and the Terminal apps permission to read/write from my ssd.
 
 ```sh
 #!/bin/bash
