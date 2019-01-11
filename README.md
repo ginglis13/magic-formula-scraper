@@ -20,7 +20,7 @@ I have set up my script to run using a cronjob every 3 months on the first of ea
 
 ```sh
 #!/bin/bash
-0 1 1 */3 * /usr/bin/python2.7 /Users/gavininglis/Documents/WebDev/magic-formula-scraper/scraper.py
+0 1 1 */3 * /path/to/python /path/to/scraper.py
 ```
 
 Features to Implement
