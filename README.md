@@ -1,6 +1,6 @@
 # magic-formula-scraper
 
-Python script for scraping [magicformulainvesting.com](https://www.magicformulainvesting.com/) and appending data to a Google Sheet using [selenium](https://www.seleniumhq.org/),[Google Sheets API](https://developers.google.com/sheets/api/), and [gspread](https://gspread.readthedocs.io/en/latest/).
+Python script for scraping [magicformulainvesting.com](https://www.magicformulainvesting.com/) and appending data to a Google Sheet using [selenium](https://www.seleniumhq.org/), [Google Sheets API](https://developers.google.com/sheets/api/), and [gspread](https://gspread.readthedocs.io/en/latest/).
 
 My brother and I make investments by following Joel Greenblatt's Magic Formula.
 The site above uses this formula and outputs the top X companies that fit within
