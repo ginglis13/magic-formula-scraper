@@ -14,6 +14,8 @@ Features
 + once logged in, selects the number of stocks to view and clicks the corresponding button to display them
 + scrapes information about listed companies, writes to csv file titled 'companies.csv'
 + appends data to spreadsheet using the Google Sheets API and gspread 
++ Optional: can be turned into a cronjob, instructions below
+
 ### Main Loop
 This is where the data is both written to a csv file and added to a Google worksheet
 ```python
@@ -65,6 +67,23 @@ your_password=getpass.getpass("Please enter your password for magicformulainvest
 username.send_keys(your_email)
 password.send_keys(your_password)
 ```
+
+To run selenium with a cron job, the browser used must be headless. I am using Chrome and giving it the option to run headless in my personal script. Chrome webdrivers must also be installed
+
+```sh
+brew cask install chromedriver
+```
+
+Replace the line that uses Safari as the browser with these lines:
+
+```python
+options = webdriver.ChromeOptions()
+options.add_argument('headless')
+
+# declare driver as chrome headless instance
+driver = webdriver.Chrome(executable_path="chromedriver", chrome_options=options)
+```
+
 Below is my cron job, accessed on Mac or Linux by running "crontab -e" at the terminal. I first had to give iTerm and the Terminal apps permission to read/write from my ssd.
 
 ```sh
