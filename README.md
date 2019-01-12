@@ -68,8 +68,9 @@ password.send_keys(your_password)
 Below is my cron job, accessed on Mac or Linux by running "crontab -e" at the terminal. I first had to give iTerm and the Terminal apps permission to read/write from my ssd.
 
 ```sh
-#!/bin/bash
-0 1 1 */3 * /path/to/python /path/to/scraper.py
+SHELL=/bin/bash
+PATH=/usr/local/bin/:/usr/bin:/usr/sbin
+0 1 1 */3 * export DISPLAY=:0 && cd /path/to/scraper && /usr/bin/python scraper.py
 ```
 
 From reading online, it sounds as though a cron job cannot read standard input and will generate an end of file error. So for the cronjob, I have hardcoded my username and password, which is really bad practice. However, since this site doesn't really contain sensitive information, I'm okay with that. The provided script in this repository still uses the secure method provided by getpass to deal with the user's password.
