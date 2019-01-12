@@ -74,7 +74,7 @@ To run selenium with a cron job, the browser used must be headless. I am using C
 brew cask install chromedriver
 ```
 
-Replace the line that uses Safari as the browser with these lines:
+Replace the line in scraper.py that uses Safari as the browser with these lines:
 
 ```python
 options = webdriver.ChromeOptions()
