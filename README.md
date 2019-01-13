@@ -86,7 +86,7 @@ driver = webdriver.Chrome(executable_path="path/to/chromedriver", chrome_options
 
 Below is my cron job, accessed on Mac or Linux by running 'crontab -e' at the terminal. I first had to give iTerm and the Terminal apps permission to read/write from my ssd.
 
-```sh
+```bash
 SHELL=/bin/bash
 PATH=/usr/local/bin/:/usr/bin:/usr/sbin
 0 1 1 */3 * export DISPLAY=:0 && cd /path/to/scraper && /usr/bin/python scraper.py
