@@ -81,7 +81,7 @@ options = webdriver.ChromeOptions()
 options.add_argument('headless')
 
 # declare driver as chrome headless instance
-driver = webdriver.Chrome(executable_path="chromedriver", chrome_options=options)
+driver = webdriver.Chrome(executable_path="path/to/chromedriver", chrome_options=options)
 ```
 
 Below is my cron job, accessed on Mac or Linux by running 'crontab -e' at the terminal. I first had to give iTerm and the Terminal apps permission to read/write from my ssd.
