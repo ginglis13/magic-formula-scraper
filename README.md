@@ -104,5 +104,6 @@ From reading online, it sounds as though a cron job cannot read standard input a
 
 Features to Implement
 ------
-+ have a file of companies already researched/invested in, check this list before writing to csv
++ have a file of companies already researched/invested in, check this list before writing to csv or updating google worksheet
 + need to add a blank row before adding all company info to google worksheet
++ maybe scrape for company descriptions and add these to the spreadsheet
