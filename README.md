@@ -8,6 +8,12 @@ the criteria of the formula. However, the site does not allow a user to copy the
 these companies from the webpage directly. Manually typing out the names of 30+ companies and their information
 is a time-suck, so I created this script to scrape this information instead.
 
+Example GIF
+------
+Here is the script running using a headless version of the Google Chrome browser, one w/o a GUI. It is also running using my credentials, so there is no interaction between the program and user. 
+
+![](scrape.gif)
+
 Features
 ------
 + opens a safari browser to the magic formula login page, then uses selenium's Keys and the getpass library to enter login information
@@ -98,7 +104,3 @@ Features to Implement
 ------
 + have a file of companies already researched/invested in, check this list before writing to csv
 + need to add a blank row before adding all company info to google worksheet
-
-Example GIF
-------
-![](scrape.gif)
