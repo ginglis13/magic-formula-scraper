@@ -68,13 +68,13 @@ username.send_keys(your_email)
 password.send_keys(your_password)
 ```
 
-To run selenium with a cron job, the browser used must be headless. I am using Chrome and giving it the option to run headless in my personal script. Chrome webdrivers must also be installed
+To run selenium with a cron job, the browser used must be headless. I am using Chrome and giving it the option to run headless in my personal script. Chrome webdrivers must also be installed:
 
 ```sh
 brew cask install chromedriver
 ```
 
-Replace the line in scraper.py that uses Safari as the browser with these lines:
+Add these lines to scraper.py in place of the current 'driver = ...' line:
 
 ```python
 options = webdriver.ChromeOptions()
@@ -84,7 +84,7 @@ options.add_argument('headless')
 driver = webdriver.Chrome(executable_path="chromedriver", chrome_options=options)
 ```
 
-Below is my cron job, accessed on Mac or Linux by running "crontab -e" at the terminal. I first had to give iTerm and the Terminal apps permission to read/write from my ssd.
+Below is my cron job, accessed on Mac or Linux by running 'crontab -e' at the terminal. I first had to give iTerm and the Terminal apps permission to read/write from my ssd.
 
 ```sh
 SHELL=/bin/bash
