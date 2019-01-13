@@ -16,9 +16,6 @@ Here is the script running using a headless version of the Google Chrome browser
   <img src="scrape.gif" />
 </p>
 
-
-![](scrape.gif)
-
 Features
 ------
 + opens a safari browser to the magic formula login page, then uses selenium's Keys and the getpass library to enter login information
