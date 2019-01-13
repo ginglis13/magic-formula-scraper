@@ -37,8 +37,9 @@ for tr in trs:
     company_tikr=td[1].get_attribute("innerHTML").encode("UTF-8")
     # write to csv file
     writer.writerow([company_name,company_tikr])
-    # append row to the google worksheet
-    worksheet.append_row([company_name,company_tikr]) 
+    # append row to worksheet
+    # use value input option = user entered so that price can be called from google finance
+    worksheet.append_row([company_name,company_tikr,'=GOOGLEFINANCE("' + company_tikr + '","price")'], value_input_option="USER_ENTERED")  
 
 driver.quit()
 ```
