@@ -18,8 +18,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 # login url for site
 url='https://www.magicformulainvesting.com/Account/LogOn'
 
-# declare driver as safari instance
-driver = webdriver.Safari()
+# declare driver as chrome instance
+driver = webdriver.Chrome()
 
 # go to page url
 driver.get(url)
