@@ -12,6 +12,11 @@ Example GIF
 ------
 Here is the script running using a headless version of the Google Chrome browser, one w/o a GUI. It is also running using my credentials, so there is no interaction between the program and user. 
 
+<p align="center">
+  <img src="scrape.gif" />
+</p>
+
+
 ![](scrape.gif)
 
 Features
