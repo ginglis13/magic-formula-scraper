@@ -10,7 +10,7 @@ is a time-suck, so I created this script to scrape this information instead.
 
 Example GIF
 ------
-Here is the script running using a headless version of the Google Chrome browser, one w/o a GUI. It is also running using my credentials, so there is no interaction between the program and user.
+Here is the script running using a headless version of the Google Chrome browser, one w/o a GUI. It is also running using my credentials, so there is no interaction between the program and user. The script takes roughly 20 seconds to run.
 
 ![](scrape.gif)
 
