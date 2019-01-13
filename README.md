@@ -18,7 +18,7 @@ Here is the script running using a headless version of the Google Chrome browser
 
 Features
 ------
-+ opens a safari browser to the magic formula login page, then uses selenium's Keys and the getpass library to enter login information
++ opens a chrome browser to the magic formula login page, then uses selenium's Keys and the getpass library to enter login information
 + once logged in, selects the number of stocks to view and clicks the corresponding button to display them
 + scrapes information about listed companies, writes to csv file titled 'companies.csv'
 + appends data to spreadsheet using the Google Sheets API and gspread 
