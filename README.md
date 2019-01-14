@@ -12,11 +12,13 @@ Example GIF
 ------
 Here is the script running using a headless version of the Google Chrome browser, one w/o a GUI. It is also running using my credentials, so there is no interaction between the program and user. 
 
-![](scrape.gif)
+<p align="center">
+  <img src="scrape.gif" />
+</p>
 
 Features
 ------
-+ opens a safari browser to the magic formula login page, then uses selenium's Keys and the getpass library to enter login information
++ opens a chrome browser to the magic formula login page, then uses selenium's Keys and the getpass library to enter login information
 + once logged in, selects the number of stocks to view and clicks the corresponding button to display them
 + scrapes information about listed companies, writes to csv file titled 'companies.csv'
 + appends data to spreadsheet using the Google Sheets API and gspread 
@@ -35,8 +37,9 @@ for tr in trs:
     company_tikr=td[1].get_attribute("innerHTML").encode("UTF-8")
     # write to csv file
     writer.writerow([company_name,company_tikr])
-    # append row to the google worksheet
-    worksheet.append_row([company_name,company_tikr]) 
+    # append row to worksheet
+    # use value input option = user entered so that price can be called from google finance
+    worksheet.append_row([company_name,company_tikr,'=GOOGLEFINANCE("' + company_tikr + '","price")'], value_input_option="USER_ENTERED")  
 
 driver.quit()
 ```
@@ -102,5 +105,6 @@ From reading online, it sounds as though a cron job cannot read standard input a
 
 Features to Implement
 ------
-+ have a file of companies already researched/invested in, check this list before writing to csv
++ have a file of companies already researched/invested in, check this list before writing to csv or updating google worksheet
 + need to add a blank row before adding all company info to google worksheet
++ maybe scrape for company descriptions and add these to the spreadsheet
