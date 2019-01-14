@@ -2,7 +2,6 @@
 # scraper.py
 # web scraper for magicformulainvesting.com
 # pulls company information from site to save time that would be spent manually typing out the info
-# Gavin Inglis
 # January 2019
 
 import time
@@ -39,7 +38,7 @@ button=driver.find_element_by_name("login")
 button.click()
 
 # sleep script for a second to allow time for page redirect
-# the sleep time could be less, but I want to ensure that 
+# the sleep time could be less, but I want to ensure that
 # the redirect happens. 1 extra second of runtime is still
 # better than about a half hour of manual typing
 time.sleep(1) # seconds
@@ -91,6 +90,6 @@ for tr in trs:
     writer.writerow([company_name,company_tikr])
     # append row to worksheet
     # use value input option = user entered so that price can be called from google finance
-    worksheet.append_row([company_name,company_tikr,'=GOOGLEFINANCE("' + company_tikr + '","price")'], value_input_option="USER_ENTERED") 
+    worksheet.append_row([company_name,company_tikr,'=GOOGLEFINANCE("' + company_tikr + '","price")'], value_input_option="USER_ENTERED")
 
-driver.quit() 
+driver.quit()
