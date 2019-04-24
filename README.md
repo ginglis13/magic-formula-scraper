@@ -52,12 +52,12 @@ Usage
 
 3. Some parts of the script will have to be personalized by the user. These sections of scraper.py are listed below.
 
-#### Line 74
+#### Add Oauth Credentials
 ```python
 credentials = ServiceAccountCredentials.from_json_keyfile_name('/path/to/your/credentials', scope)
 ```
 
-#### Line 78
+#### Add URL to Your Spreadsheet
 ```python
 # access sheet by url
 worksheet = gc.open_by_url('URL_TO_YOUR_SPREADSHEET').get_worksheet(1) # worksheet number
