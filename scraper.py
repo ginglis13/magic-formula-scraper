@@ -65,7 +65,7 @@ def writeSheet(names, tikrs):
     # access sheet by url
     wks = gc.open_by_url("YOUR URL HERE").get_worksheet(1) # worksheet number
     date=datetime.datetime.today().strftime('%Y-%m-%d') # current date
-    wks.append_row([date]) #append the date
+    wks.append_row([date], table_range='A1') #append the date, starts in first column
 
     for i in range(len(names)):
         price = '=GOOGLEFINANCE("' + tikrs[i] + '","price")'
@@ -74,7 +74,7 @@ def writeSheet(names, tikrs):
 
         url = getUrl(query)
 
-        wks.append_row([names[i],tikrs[i], price, url], value_input_option="USER_ENTERED")
+        wks.append_row([names[i],tikrs[i], price, url], table_range='A1', value_input_option="USER_ENTERED") # start in first column
 
 def getUrl(companyName):
     url    = GOOGLE_URL + '?q=' + companyName
@@ -98,9 +98,9 @@ your_password=getpass.getpass("Please enter your password for magicformulainvest
 username.send_keys(your_email)
 password.send_keys(your_password)
 
-# enter email and password
-username.send_keys("EMAIL")
-password.send_keys("PASSWORD")
+# enter email and password (for hard coding only)
+# username.send_keys("EMAIL")
+# password.send_keys("PASSWORD")
 
 # click login button
 button=driver.find_element_by_name("login")
