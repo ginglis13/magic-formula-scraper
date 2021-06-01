@@ -43,6 +43,8 @@ driver = webdriver.Chrome(executable_path="./chromedriver", options=options)
 '''Functions'''
 def scrapeSite():
 
+    print("Scraping stock info...")  # update for terminal
+
     # find all td elements, write needed elements to file
     trs=driver.find_elements_by_xpath('//table[@class="divheight screeningdata"]/tbody/tr')
 
@@ -62,10 +64,15 @@ def scrapeSite():
 
 def writeSheet(names, tikrs):
 
+    print("Writing to sheet...")  # update to terminal
+
     # access sheet by url
     wks = gc.open_by_url("YOUR URL HERE").get_worksheet(1) # worksheet number
+    
+    #wks.append_row([' '], table_range='A1') # append a blank line before tickers as requested by OC
+         
     date=datetime.datetime.today().strftime('%Y-%m-%d') # current date
-    wks.append_row([date], table_range='A1') #append the date, starts in first column
+    wks.append_row([date], table_range='A1') # append the date, starts in first column
 
     for i in range(len(names)):
         price = '=GOOGLEFINANCE("' + tikrs[i] + '","price")'
