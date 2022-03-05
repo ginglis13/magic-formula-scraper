@@ -9,15 +9,25 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 
+import zipfile
 import time
 import datetime
-
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-
 import requests
 import re
+import getpass
 
+# Get latest chromedriver zip file for mac, extract into same folder
+try:
+    version = requests.get('https://chromedriver.storage.googleapis.com/LATEST_RELEASE').text
+    url = 'https://chromedriver.storage.googleapis.com/{0}/{1}'.format(version, 'chromedriver_mac64.zip')
+    r = requests.get(url, allow_redirects=True)
+    open('chromedriver.zip', 'wb').write(r.content)
+    with zipfile.ZipFile("chromedriver.zip", "r") as zip_ref:
+        zip_ref.extractall()
+except:
+    pass
 
 '''Globals'''
 
