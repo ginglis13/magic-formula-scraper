@@ -9,15 +9,25 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 
+import zipfile
 import time
 import datetime
-
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-
 import requests
 import re
+import getpass
 
+# Get latest chromedriver zip file for mac, extract into same folder
+try:
+    version = requests.get('https://chromedriver.storage.googleapis.com/LATEST_RELEASE').text
+    url = 'https://chromedriver.storage.googleapis.com/{0}/{1}'.format(version, 'chromedriver_mac64.zip')
+    r = requests.get(url, allow_redirects=True)
+    open('chromedriver.zip', 'wb').write(r.content)
+    with zipfile.ZipFile("chromedriver.zip", "r") as zip_ref:
+        zip_ref.extractall()
+except:
+    pass
 
 '''Globals'''
 
@@ -43,6 +53,8 @@ driver = webdriver.Chrome(executable_path="./chromedriver", options=options)
 '''Functions'''
 def scrapeSite():
 
+    print("Scraping stock info...")  # update for terminal
+
     # find all td elements, write needed elements to file
     trs=driver.find_elements_by_xpath('//table[@class="divheight screeningdata"]/tbody/tr')
 
@@ -62,10 +74,15 @@ def scrapeSite():
 
 def writeSheet(names, tikrs):
 
+    print("Writing to sheet...")  # update to terminal
+
     # access sheet by url
     wks = gc.open_by_url("YOUR URL HERE").get_worksheet(1) # worksheet number
+    
+    #wks.append_row([' '], table_range='A1') # append a blank line before tickers as requested by OC
+         
     date=datetime.datetime.today().strftime('%Y-%m-%d') # current date
-    wks.append_row([date]) #append the date
+    wks.append_row([date], table_range='A1') # append the date, starts in first column
 
     for i in range(len(names)):
         price = '=GOOGLEFINANCE("' + tikrs[i] + '","price")'
@@ -74,7 +91,7 @@ def writeSheet(names, tikrs):
 
         url = getUrl(query)
 
-        wks.append_row([names[i],tikrs[i], price, url], value_input_option="USER_ENTERED")
+        wks.append_row([names[i],tikrs[i], price, url], table_range='A1', value_input_option="USER_ENTERED") # start in first column
 
 def getUrl(companyName):
     url    = GOOGLE_URL + '?q=' + companyName
@@ -98,9 +115,9 @@ your_password=getpass.getpass("Please enter your password for magicformulainvest
 username.send_keys(your_email)
 password.send_keys(your_password)
 
-# enter email and password
-username.send_keys("EMAIL")
-password.send_keys("PASSWORD")
+# enter email and password (for hard coding only)
+# username.send_keys("EMAIL")
+# password.send_keys("PASSWORD")
 
 # click login button
 button=driver.find_element_by_name("login")
