@@ -18,17 +18,6 @@ import requests
 import re
 import getpass
 
-# Get latest chromedriver zip file for mac, extract into same folder
-try:
-    version = requests.get('https://chromedriver.storage.googleapis.com/LATEST_RELEASE').text
-    url = 'https://chromedriver.storage.googleapis.com/{0}/{1}'.format(version, 'chromedriver_mac64.zip')
-    r = requests.get(url, allow_redirects=True)
-    open('chromedriver.zip', 'wb').write(r.content)
-    with zipfile.ZipFile("chromedriver.zip", "r") as zip_ref:
-        zip_ref.extractall()
-except:
-    pass
-
 '''Globals'''
 
 GOOGLE_URL = 'http://www.google.com/search'
@@ -49,6 +38,31 @@ options.add_argument('headless')
 
 # declare driver as chrome headless instance
 driver = webdriver.Chrome(executable_path="./chromedriver", options=options)
+
+'''Chromedriver update'''
+# Find current version of browser and chromedriver
+chrome_version = driver.capabilities['browserVersion']
+driver_version = driver.capabilities['chrome']['chromedriverVersion'].split(' ')[0]
+
+print("Chrome version: "+ chrome_version + ".")
+print("Chromedriver version: " + driver_version + ".")
+
+# If mismatched versions, install new chromedriver
+if chrome_version[0:3] != driver_version[0:3]:
+    print("Updating Chromedriver...")
+    # Get latest chromedriver zip file for mac, extract into same folder
+    try:
+        version = requests.get('https://chromedriver.storage.googleapis.com/LATEST_RELEASE').text
+        url = 'https://chromedriver.storage.googleapis.com/{0}/{1}'.format(version, 'chromedriver_mac64.zip')
+        r = requests.get(url, allow_redirects=True)
+        open('chromedriver.zip', 'wb').write(r.content)
+        with zipfile.ZipFile("chromedriver.zip", "r") as zip_ref:
+            zip_ref.extractall()
+    except:
+        pass
+
+print("Chromedriver updated.")
+
 
 '''Functions'''
 def scrapeSite():
