@@ -44,7 +44,7 @@ def scrapeSite():
     print('Scraping stock info...')
 
     # find all td elements, write needed elements to file
-    trs=driver.find_elements(By.XPATH,'//table[@class="divheight screeningdata"]/tbody/tr')
+    trs = driver.find_elements(By.XPATH,'//table[@class="divheight screeningdata"]/tbody/tr')
 
     names = []
     tikrs = []
@@ -52,8 +52,8 @@ def scrapeSite():
     for tr in trs:
         td = tr.find_elements(By.XPATH,".//td")
 
-        company_name=td[0].get_attribute("innerHTML")
-        company_tikr=td[1].get_attribute("innerHTML")
+        company_name = td[0].get_attribute("innerHTML")
+        company_tikr = td[1].get_attribute("innerHTML")
 
         names.append(company_name)
         tikrs.append(company_tikr)
@@ -64,10 +64,9 @@ def writeSheet(names, tikrs):
     print('Writing to sheet...')
 
     # access sheet by url
-    wks = gc.open_by_url("YOUR URL HERE"
-                         "/edit?usp=sharing").get_worksheet(1)  # worksheet num 1 is Research
+    wks = gc.open_by_url("YOUR URL HERE").get_worksheet(1)  # worksheet num 1 is Research
 
-    date=datetime.datetime.today().strftime('%Y-%m-%d')  # current date
+    date = datetime.datetime.today().strftime('%Y-%m-%d')  # current date
     # wks.append_row([date], table_range='A1')  # append the date starting in first column
     wks.append_row([date])
 
@@ -77,15 +76,14 @@ def writeSheet(names, tikrs):
         query = names[i]
 
         url = getUrl(query)
-
-        # wks.append_row([names[i],tikrs[i], price, url], table_range='A1', value_input_option="USER_ENTERED")
+             
         wks.append_row([names[i],tikrs[i], price, url], value_input_option="USER_ENTERED")
 
 def getUrl(companyName):
-    url= GOOGLE_URL + '?q=' + companyName
+    url = GOOGLE_URL + '?q=' + companyName
     result = requests.get(url)
     # fancy regex courtesy of pbui
-    urls= re.findall('/url\?q=([^&]*)', result.text)
+    urls = re.findall('/url\?q=([^&]*)', result.text)
     return urls[0]
 
 '''Main Execution'''
@@ -99,17 +97,17 @@ password=driver.find_element(By.NAME,"Password")
 
 # enter email and password. uses getpass to hide password (i.e. not using plaintext)
 # Replace with raw_input() with input() for python 3
-your_email= input("Please enter your email for magicformulainvesting.com: ")
+your_email = input("Please enter your email for magicformulainvesting.com: ")
 
 # Have to run scaper.py from terminal so getpass will work :)
-your_password=getpass.getpass("Please enter your password for magicformulainvesting.com: ")
+your_password = getpass.getpass("Please enter your password for magicformulainvesting.com: ")
 
 # selenium sends info to mfi.com
 username.send_keys(your_email)
 password.send_keys(your_password)
 
 # click login button
-button=driver.find_element(By.NAME,"login")
+button = driver.find_element(By.NAME,"login")
 button.click()
 
 time.sleep(1)  # seconds
@@ -118,7 +116,7 @@ time.sleep(1)  # seconds
 radio = driver.find_element(By.XPATH,'//*[@id="Select30" and @value="false"]')
 radio.click()
 
-button2=driver.find_element(By.NAME,"stocks")
+button2 = driver.find_element(By.NAME,"stocks")
 button2.click()
 
 time.sleep(.5)
